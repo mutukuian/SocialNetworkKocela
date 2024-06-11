@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_register_navigation"
+    app:startDestination="@id/login">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.kocelanetwork.presentation.activities.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/login"
+        android:name="com.kocelanetwork.presentation.activities.Login"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <activity
+        android:id="@+id/registerActivity"
+        android:name="com.kocelanetwork.presentation.activities.RegisterActivity"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" />
+
+    <!-- Define navigation actions between activities if needed -->
+    <action
+        android:id="@+id/action_loginActivity_to_registerActivity"
+        app:destination="@id/registerActivity" />
+
+    <action
+        android:id="@+id/action_registerActivity_to_mainActivity"
+        app:destination="@id/mainActivity" />
+</navigation>
+

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">kocelanetwork</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">SignUp</string>
+    <string name="forgot_pass">Forgot Password?</string>
+    <string name="or_continue">or continue with</string>
+    <string name="username">UserName</string>
+</resources>
