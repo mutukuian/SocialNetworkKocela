@@ -7,4 +7,13 @@
     <string name="forgot_pass">Forgot Password?</string>
     <string name="or_continue">or continue with</string>
     <string name="username">UserName</string>
+    <string name="hey_ian">Hey Ian</string>
+    <string name="upload">Upload</string>
+    <string name="chat">Chat</string>
+    <string name="search_hint">Search Now</string>
+    <string name="all">All</string>
+    <string name="recommended">Recommended Snippets</string>
+    <string name="the_danger_">Dangers of having a nokia \nPhone</string>
+    <string name="snip_top">Top Snippets</string>
+    <string name="your_top_sn">Your Top Snippers</string>
 </resources>

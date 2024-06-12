@@ -20,9 +20,12 @@ class LoginViewModel @Inject constructor(private val authRepository: AuthReposit
         viewModelScope.launch {
             authRepository.login(email, password).collect { result ->
                 when(result){
-                    is Resource.Success ->{_loginState.send(AuthState(data = "LogIn Successfully"))}
+                    is Resource.Success ->{
+
+                        _loginState.send(AuthState(data = "LogIn Successfully"))
+                    }
                     is Resource.Loading ->{_loginState.send(AuthState(isLoading = true))}
-                    is Resource.Error ->{_loginState.send(AuthState(error = result.message.toString()))}
+                    is Resource.Error ->{_loginState.send(AuthState(error = result.message?:"Login Failed!!"))}
                 }
             }
         }

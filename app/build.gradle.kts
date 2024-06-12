@@ -67,6 +67,9 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.1") // or the latest version
 
 
+    //recyclerview
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+
 }
 
 // Allow references to generated code

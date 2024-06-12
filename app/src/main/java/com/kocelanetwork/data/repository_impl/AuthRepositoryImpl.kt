@@ -24,7 +24,7 @@ class AuthRepositoryImpl @Inject constructor(private val authService: AuthServic
                     val user = User(
                         id = "", // Set appropriately if there's an id in response
                         email = email,
-                        name = "", // Set appropriately if there's a name in response
+                        name = loginResponse.name, // Set appropriately if there's a name in response
                         token = loginResponse.token
 
                     )
