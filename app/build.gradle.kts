@@ -70,6 +70,8 @@ dependencies {
     //recyclerview
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
 
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
+
 }
 
 // Allow references to generated code

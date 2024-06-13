@@ -1,5 +1,7 @@
 package com.kocelanetwork.core.common
 
+
+
 object ValidationUtils {
 
     // Email regex pattern
@@ -15,4 +17,5 @@ object ValidationUtils {
     fun isValidPassword(password: String): Boolean {
         return password.isNotBlank() && passwordRegex.matches(password)
     }
+
 }

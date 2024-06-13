@@ -1,5 +1,6 @@
 package com.kocelanetwork.presentation.view_model
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kocelanetwork.core.common.Resource
@@ -21,11 +22,20 @@ class LoginViewModel @Inject constructor(private val authRepository: AuthReposit
             authRepository.login(email, password).collect { result ->
                 when(result){
                     is Resource.Success ->{
-
                         _loginState.send(AuthState(data = "LogIn Successfully"))
                     }
-                    is Resource.Loading ->{_loginState.send(AuthState(isLoading = true))}
-                    is Resource.Error ->{_loginState.send(AuthState(error = result.message?:"Login Failed!!"))}
+                    is Resource.Loading ->{
+                        _loginState.send(AuthState(isLoading = true))
+                    }
+                    is Resource.Error ->{
+                        val errorMessage = when(result.message){
+                            "Incorrect password" -> "Incorrect password"
+                            "Email not found" -> "Email not found"
+                            else -> "Login Failed!!"
+                        }
+                        Log.d("This",errorMessage)
+                        _loginState.send(AuthState(error = errorMessage))
+                    }
                 }
             }
         }

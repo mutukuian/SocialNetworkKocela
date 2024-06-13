@@ -2,6 +2,7 @@ package com.kocelanetwork.presentation.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -17,6 +18,8 @@ import com.kocelanetwork.core.common.ValidationUtils
 import com.kocelanetwork.presentation.view_model.AuthState
 import com.kocelanetwork.presentation.view_model.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
@@ -72,7 +75,10 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            viewModel.register(email, password, name)
+            lifecycleScope.launch {
+                viewModel.register(email, password, name)
+            }
+
         }
     }
 
@@ -83,19 +89,24 @@ class RegisterActivity : AppCompatActivity() {
         } else {
             progressBar.visibility = ProgressBar.GONE
             authState.error?.let { error ->
-                // Show error message
-                 Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+                Log.d("RegisterActivity", "Registration error: $error")
+                Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
             }
             authState.data?.let { data ->
-                  Toast.makeText(this, data, Toast.LENGTH_SHORT).show()
-                // Navigate to LoginActivity with the username
-//                val username = usernameInput.text.toString().trim()
-                val intent = Intent(this, Login::class.java)
-//                intent.putExtra("username", username)
-                startActivity(intent)
-                finish()
+                Log.d("RegisterActivity", "Registration successful: $data")
+                Toast.makeText(this, data, Toast.LENGTH_SHORT).show()
+                if (data == "Registration successful") {
+                    navigateToLoginScreen()
+                }
+
             }
         }
+    }
+
+    private fun navigateToLoginScreen() {
+        val intent = Intent(this, Login::class.java)
+        startActivity(intent)
+
     }
 
     private fun showToast(message: String) {
